@@ -7,11 +7,11 @@ app = Flask(__name__)
 CORS(app) 
 
 API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
-API_KEY = "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"
+API = "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"
 
 def query_huggingface_api(prompt):
     """Send the prompt to the Hugging Face model and return the response."""
-    headers = {"Authorization": f"Bearer {API_KEY}"}
+    headers = {"Authorization": f"Bearer {API}"}
     payload = {
         "inputs": prompt,
         "parameters": {
