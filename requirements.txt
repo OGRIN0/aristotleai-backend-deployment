@@ -1,2 +1,10 @@
 flask
 flask-cors
+blinker
+click
+gunicorn
+itsdangerous
+Jinja2
+MarkupSafe
+packaging
+Werkzeug
