@@ -1,10 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-
 import requests
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app)
 
 API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.3"
 API = "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"
@@ -19,7 +18,6 @@ def query_huggingface_api(prompt):
             "temperature": 0.5,
             "top_p": 0.8,
             "frequency_penalty": 0.5,
-
             "presence_penalty": 0.5
         }
     }
@@ -31,6 +29,11 @@ def query_huggingface_api(prompt):
         return response.json()
     else:
         raise Exception(f"Hugging Face API error: {response.status_code} - {response.text}")
+
+@app.route('/')
+def index():
+    """Handle requests to the root URL."""
+    return 'Welcome to the API. Use the /query endpoint to interact with the model.'
 
 @app.route('/query', methods=['POST'])
 def process_query():
